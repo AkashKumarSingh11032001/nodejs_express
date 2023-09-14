@@ -1,8 +1,8 @@
 // method 1- using try-catch
 
 function doSomething() {
-    console.log("I m doing something");
-//   consol.log("I m doing something");
+    // console.log("I m doing something");
+  consol.log("I m doing something");
 }
 
 // try {
@@ -21,18 +21,29 @@ function doSomething() {
 // doSomething();
 
 // method 3- promise
-const myPromise = new Promise((resolve, reject) => {
-  if (true) {
-    resolve(doSomething());
-  } else {
-    reject(doSomething());
-  }
-});
+// const myPromise = new Promise((resolve, reject) => {
+//   if (true) {
+//     resolve(doSomething());
+//   } else {
+//     reject(doSomething());
+//   }
+// });
 
-myPromise
-  .then((val) => {
-    console.log(val); // function not returing anything thats why undefined!
-  })
-  .catch((err) => {
-    console.log("Error Occcured", err);
-  });
+// myPromise
+//   .then((val) => {
+//     console.log(val); // function not returing anything thats why undefined!
+//   })
+//   .catch((err) => {
+//     console.log("Error Occcured", err);
+//   });
+
+// method 4- Async and Await
+const someFunc = async () =>{
+    try{
+        await doSomething();
+    } catch(err){
+        throw new Error("Error caught by async n await: ", err);
+    }
+}
+
+someFunc()
