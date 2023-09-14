@@ -21,15 +21,21 @@
 
 // Progress bar -- CLI downloading bar
 const ProgressBar = require("progress");
-const bar = new ProgressBar("downloading [:bar] :rate/bps :precent :etas",{
-    total:20
-})
+// const bar = new ProgressBar("downloading [:bar] :rate/bps :precent :etas",{
+//     total:20
+// })
 
-const timer = setInterval(()=>{
-    bar.tick();
-    if(bar.complete){
-        clearInterval(timer);
-    }
-},100)
+// const timer = setInterval(()=>{
+//     bar.tick();
+//     if(bar.complete){
+//         clearInterval(timer);
+//     }
+// },100)
+
+
+// output console log in different color
+
+const chalk = require("chalk")
+console.log(chalk.green("Hey! I m in green color."))
 
 
