@@ -31,7 +31,7 @@
 //       reject();
 //     }
 //   });
-  
+
 //   myPromise.then(
 //     // if true
 //     (person) => {
@@ -44,20 +44,39 @@
 //     }
 //   );
 
-//  nested chaining call
-const p = Promise.resolve("Task done!")
-p.then((val)=>{
-    console.log(val);
-    return "task done 2"
-}).then((val)=>{
-    console.log(val)
-    return "task done 3"
-}).then((val)=>{
-    console.log(val)
-    return "task done 4"
+// //  nested chaining call
+// const p = Promise.resolve("Task done!");
+// p.then((val) => {
+//   console.log(val);
+//   return "task done 2";
+// })
+//   .then((val) => {
+//     console.log(val);
+//     return "task done 3";
+//   })
+//   .then((val) => {
+//     console.log(val);
+//     return "task done 4";
+//   })
+//   .then((val) => {
+//     console.log(val);
+//     return "task done 5";
+//   })
+//   .catch((val) => console.log(val));
 
-}).then((val)=>{
-    console.log(val)
-    return "task done 5"
+// Promise All and Promise race
+// Promise ALl:  will help use to give multi api result in list
+// Primise race: will give the first api call that executed first
 
-}).catch((val)=>console.log(val))
+const makeApiCalls = (time) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("This APi Executed in: " + time);
+    }, time);
+  });
+};
+
+let multiApiCall = [makeApiCalls(1000), makeApiCalls(2000), makeApiCalls(500)];
+
+Promise.all(multiApiCall).then((val) => console.log(val));
+Promise.race(multiApiCall).then((val) => console.log("First Api that executed is: "+val));
