@@ -1,4 +1,5 @@
 // promise: reject and resolve
+// its ASYNC in nature.
 
 const promise = new Promise((resolve, reject) => {
   console.log("ASYNC task execution");
