@@ -21,3 +21,13 @@ function asyncCallback(cb){
 asyncCallback(()=>console.log(name2));
 console.log("Task end");
 const name2 = "AKASH";
+
+// callback Hell is a condition where we are requesting api in nested fassion, it will lead us to in hell situation.
+
+// makeApiCall(()=>{
+//     makeApiCall(()=>{
+//         makeApiCall(()=>{
+
+//         })
+//     })
+// })
