@@ -38,7 +38,7 @@ const fs = require("fs");
 // }
 
 // reading file -- using PROMISE
-// const myPromise = require("fs").promises;
+const myPromise = require("fs").promises;
 
 // const promiseFunc = async () => {
 //   try {
@@ -56,7 +56,21 @@ const fs = require("fs");
 // writing file -- Async way
 const txtFile = path.join(__dirname, "file_test", "text.txt");
 const dataToWrite = "Hi Varsha!";
-fs.writeFile(txtFile, dataToWrite, (err) => {
-  if (err) throw new Error("Something went wrong");
-  console.log("Write opration completed Successfully!");
-});
+// fs.writeFile(txtFile, dataToWrite, (err) => {
+//   if (err) throw new Error("Something went wrong");
+//   console.log("Write opration completed Successfully!");
+// });
+
+// using Promise (writing n reading file)
+const writingAndReadingFile = async () => {
+  try {
+    await myPromise.writeFile(txtFile,dataToWrite);
+    await myPromise.appendFile(txtFile, "\nAur kya chl rha hai?");
+    const data = await myPromise.readFile(txtFile,"utf-8");
+    console.log(data);
+  } catch (err) {
+    console.log("Something went wrong");
+  }
+};
+
+writingAndReadingFile();
