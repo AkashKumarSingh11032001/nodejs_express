@@ -1,6 +1,5 @@
 const prompt = require("prompt-sync")({ sigint: true });
 
-// using Promise
 const userLogin = () => {
   console.log("Enter Username and Password");
   let username = prompt("Enter username: ");
@@ -22,6 +21,8 @@ function goToHomePage(userAuth) {
   return Promise.resolve(`Go to Homepage as: ${userAuth}`);
 }
 
+// using Promise
+
 // userLogin()
 //   .then((response) => {
 //     console.log("Validating user!");
@@ -31,6 +32,7 @@ function goToHomePage(userAuth) {
 //   .catch((err)=>console.log(err));
 
 // using Async n Await
+
 async function login() {
   try {
     const respnse = await userLogin();
