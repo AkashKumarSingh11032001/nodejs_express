@@ -8,6 +8,10 @@ const express = require("express");
 const app = express();
 const port = 5001;
 
+// Built—in middleware
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
 // Application-level middleware
 const loggerMiddleware = (req, res, next) => {
   console.log(`${new Date()} ----- Request [${req.method}] [${req.url}]`);
@@ -21,8 +25,8 @@ const router = express.Router();
 app.use("/api/users", router);
 
 const fakeAuth = (req, res, next) => {
-  const authStatus = false;
-  //   const authStatus = true;
+//   const authStatus = false;
+    const authStatus = true;
   if (authStatus) {
     console.log("User Authenthicated");
     next();
@@ -35,6 +39,7 @@ const getUser = (req, res) => {
   res.json({ message: "Get All users" });
 };
 const createUser = (req, res) => {
+  console.log(`This is the request body recived from client:`,req.body)
   res.json({ message: "User created" });
 };
 
@@ -68,6 +73,10 @@ const errorHandler = (err, req, res, next) => {
   }
 };
 app.use(errorHandler);
+
+
+
+
 app.listen(port, () => {
   console.log(`Listening at Port: ${port}`);
 });
