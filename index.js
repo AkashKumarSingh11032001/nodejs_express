@@ -11,7 +11,15 @@ app.get("/user", (req, res) => {
 app.get("/user/:id", (req, res) => {
   res.json({ message: `I am User With Id: ${req.params.id} ` });
 });
-
+app.post("/user/", (req, res) => {
+  res.json({ message: `Create new Users ` });
+});
+app.put("/user/:id", (req, res) => {
+  res.json({ message: `Update User With Id: ${req.params.id} ` });
+});
+app.delete("/user/:id", (req, res) => {
+  res.json({ message: `Delete User With Id: ${req.params.id} ` });
+});
 app.listen(port, () => {
   console.log(`App listining at port: ${port}`);
 });
