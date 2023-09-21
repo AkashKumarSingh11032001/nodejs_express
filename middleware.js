@@ -21,8 +21,8 @@ const router = express.Router();
 app.use("/api/users", router);
 
 const fakeAuth = (req, res, next) => {
-  // const authStatus = false;
-  const authStatus = true;
+  const authStatus = false;
+  //   const authStatus = true;
   if (authStatus) {
     console.log("User Authenthicated");
     next();
@@ -43,7 +43,7 @@ router.route("/").get(getUser).post(createUser);
 
 // Error—hand ling middleware
 const errorHandler = (err, req, res, next) => {
-  const statusCode = res.statusCode ? statusCode : 500;
+  const statusCode = res.statusCode ? res.statusCode : 500;
   switch (statusCode) {
     case 401:
       res.json({
@@ -67,7 +67,7 @@ const errorHandler = (err, req, res, next) => {
       break;
   }
 };
-
+app.use(errorHandler);
 app.listen(port, () => {
   console.log(`Listening at Port: ${port}`);
 });
